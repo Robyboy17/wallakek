@@ -1,0 +1,17 @@
+<div class="bg-white flex justify-between items-center px-6 py-4" data-controller="menu">
+  <%= link_to products_path do %>
+    <h1 class="text-2xl font-bold text-black"><%= t('app_name') %></h1>
+  <% end %>
+
+  <button class="sm:hidden" data-action="click->menu#open"><%= image_tag 'icons/menu.svg', width: 35, height: 35 %></button>
+
+  <div class="hidden sm:block">
+    <%= render partial: 'shared/items' %>
+  </div>
+
+  <!-- Menu mobile -->
+  <div class="top-0 right-0 mt-2 pl-3 w-2/5 bg-blue-200 fixed rounded-l-2xl h-64 z-40 gap-3 flex flex-col translate-x-full ease-in-out duration-300" data-menu-target="items">
+    <button class="mb-2 mt-4" data-action="click->menu#close"><%= image_tag 'icons/close.svg', width: 35, height: 35 %></button>
+    <%= render partial: 'shared/items' %>
+  </div>
+</div>

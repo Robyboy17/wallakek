@@ -1,0 +1,37 @@
+<div class="bg-white rounded-2xl p-2 ">
+  <%= form_with model: @product, class: "flex flex-col" do |form| %>
+    <% @product.errors.full_messages.each do |error| %>
+      <div>
+        <%= error %>
+      </div>
+    <% end %>
+
+    <div class="flex flex-col">
+      <%= form.label :title %>
+      <%= form.text_field :title, class:"rounded-2xl" %>
+    </div>
+
+    <div class="flex flex-col">
+      <%= form.label :description %>
+      <%= form.text_area :description, class:"rounded-2xl" %>
+    </div>
+
+    <div class="flex flex-col">
+      <%= form.label :price %>
+      <%= form.number_field :price, class:"rounded-2xl" %>
+    </div>
+
+    <div class="flex flex-col">
+      <%= form.label :category_id %>
+      <%= form.collection_select :category_id, Category.all.order(name: :asc), :id, :name, {}, {:class=>'rounded-2xl'} %>
+    </div>
+
+    <div class="flex flex-col">
+      <%= form.label :photo %>
+      <%= form.file_field :photo %>
+    </div>
+    <div class="bg-gray-200 mt-2 rounded-2xl w-32 px-2">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
